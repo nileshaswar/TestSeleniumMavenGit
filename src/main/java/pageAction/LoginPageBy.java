@@ -8,13 +8,17 @@ import org.testng.asserts.SoftAssert;
 
 //import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends BasePage{
+public class LoginPageBy {
 
-//	WebDriver driver;
+	WebDriver driver;
 
-	public LoginPage(WebDriver driver) {
-//		this.driver = driver;
-		super(driver);
+	// public WebElement we;
+
+	public LoginPageBy(WebDriver driver) {
+		// System.out.println(this.driver+"global in pom java class");
+		// System.out.println(driver+"Local which came from test class");
+		this.driver = driver;
+		// System.out.println(this.driver+"global in pom java class after assignment");
 	}
 
 	public WebElement getEmailTBX() {
