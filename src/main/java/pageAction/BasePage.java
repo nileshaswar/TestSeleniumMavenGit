@@ -1,5 +1,7 @@
 package pageAction;
 
+//import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -18,8 +20,19 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
+        driver.manage().deleteAllCookies();
         wait = new WebDriverWait(driver, TIMEOUT, POLLING);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
+        
+/*		//set the implicit time out to find WebElements
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		//set the page load time out
+		driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
+		//maximize the browser window
+		driver.manage().window().maximize();
+		//get the web site URL
+		driver.get(prop.getProperty("url"));*/
+        
     }
 
     protected void waitForElementToAppear(By locator) {

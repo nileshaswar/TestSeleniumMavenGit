@@ -4,23 +4,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.asserts.SoftAssert;
 
-//import org.openqa.selenium.support.FindBy;
+public class LoginPage extends BasePage {
 
-public class LoginPage extends BasePage{
-
-//	WebDriver driver;
+	// WebDriver driver;
 
 	public LoginPage(WebDriver driver) {
-//		this.driver = driver;
+		// this.driver = driver;
 		super(driver);
 	}
 
 	public WebElement getEmailTBX() {
-		// System.out.println("1");
 		return driver.findElement(By.id("email"));
-
 	}
 
 	public WebElement getPasswordTBX() {
@@ -28,33 +23,32 @@ public class LoginPage extends BasePage{
 	}
 
 	public void setInValidEmail() {
-		getEmailTBX().clear();
 		getEmailTBX().sendKeys("ifbsbczlbclizjncAs");
 	}
 
 	public void setInValidPassword() {
-		getPasswordTBX().clear();
 		getPasswordTBX().sendKeys("csugAIkjbhlzkhf");
 	}
 
 	public String getValidEmail() {
-		getEmailTBX().sendKeys("aaaa");
+		setInValidEmail();
+		setInValidPassword();
+		signin();
 		String s1 = driver.findElement(By.id("email_error")).getText();
-		return s1.substring(s1.indexOf('j'), s1.length());
+		return s1.substring(s1.indexOf('k'), s1.length());
 	}
 
 	public String getValidPassword() {
-		getPasswordTBX().sendKeys("aaaa");
+		setInValidEmail();
+		setInValidPassword();
+		signin();
 		String s1 = driver.findElement(By.id("password_error")).getText();
-		return s1.substring(s1.indexOf('j'), s1.length());
+		return s1.substring(s1.indexOf('1'), s1.length());
 	}
 
-	public void setValidEmail(String email) {
+	public void setValidCredientials(String email, String password) {
 		getEmailTBX().clear();
 		getEmailTBX().sendKeys(email);
-	}
-
-	public void setValidPassword(String password) {
 		getPasswordTBX().clear();
 		getPasswordTBX().sendKeys(password);
 	}
@@ -63,22 +57,37 @@ public class LoginPage extends BasePage{
 		return driver.getTitle();
 	}
 
+	public WebElement getSignInButton() {
+		return driver.findElement(By.xpath(".//button[@type='submit']"));
+	}
+
 	public void signin() {
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		getSignInButton().click();
 
 	}
 
-//	@FindBy(xpath = "//p[@Class='login-box-msg']")
-//	WebElement getLoginBoxMessageLabel;
-
 	@FindBy(className = "login-box-msg")
 	WebElement getLoginBoxMessageLabel;
-	
+
 	@FindBy(id = "email_error")
 	WebElement getEmailLabel;
 
 	@FindBy(id = "password_error")
 	WebElement getPasswordLabel;
-	
+
+	public WebElement getLoginBoxMessageLabel() {
+		System.out.println(getLoginBoxMessageLabel.getText());
+		return getLoginBoxMessageLabel;
+	}
+
+	public WebElement getEmailLabel() {
+		System.out.println(getEmailLabel.getText());
+		return getEmailLabel;
+	}
+
+	public WebElement getPasswordLabel() {
+		System.out.println(getPasswordLabel.getText());
+		return getPasswordLabel;
+	}
 
 }
