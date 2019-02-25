@@ -1,6 +1,7 @@
 package testSuite;
 
 //import io.github.bonigarcia.wdm.ChromeDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,6 +11,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+//import org.testng.annotations.Test;
 
 import config.GetPropertiesObj;
 
@@ -68,7 +70,15 @@ public class BaseTest {
 		// driver.close();
 		// driver.quit();
 	}
-
+//	@Test
+	public void navigateToDashboardPage() {
+		driver.get(props.getUrl());
+		driver.findElement(By.id("email")).clear();
+		driver.findElement(By.id("email")).sendKeys(props.getUser());
+		driver.findElement(By.id("password")).clear();
+		driver.findElement(By.id("password")).sendKeys(props.getPassword());
+		driver.findElement(By.xpath(".//button[@type='submit']")).click();
+	}
 	public WebDriver getDriver() {
 		return driver;
 	}

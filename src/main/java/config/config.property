@@ -1,4 +1,5 @@
 browser=firefox
-username=nilesh
-password=password123
+url=file:///F:/JBK_Software/Selenium%20Software/Offline%20Website/index.html
+username=kiran@gmail.com
+password=123456
 db=oracle

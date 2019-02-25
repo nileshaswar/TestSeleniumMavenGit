@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.openqa.selenium.WebDriver;
 
 import pageAction.LoginPage;
+//import pageAction.DashboardPage;
 
 import org.testng.asserts.SoftAssert;
 
@@ -14,6 +15,7 @@ public class LoginPageTests extends BaseTest {
 	// WebDriver driver;
 	WebDriver driver; // Making it global
 	LoginPage loginpage;
+//	DashboardPage dashboardpage;
 
 	@BeforeClass
 	public void initializeLoginPage() {
@@ -21,7 +23,7 @@ public class LoginPageTests extends BaseTest {
 									// super class
 		loginpage = new LoginPage(driver);
 		driver.get("file:///F:/JBK_Software/Selenium%20Software/Offline%20Website/index.html");
-		Assert.assertEquals(loginpage.getPageTitle(), "AdminLTE 2 | Log in");
+		Assert.assertEquals(loginpage.getCurrentPageTitle(), "AdminLTE 2 | Log in");
 	}
 
 	@Test
@@ -50,17 +52,23 @@ public class LoginPageTests extends BaseTest {
 		// try to login with invalid credentials-wrong email & password
 		loginpage.setValidCredientials(loginpage.getValidEmail(),
 				loginpage.getValidPassword());
-//		System.out.println(loginpage.getEmailTBX().getAttribute("value"));
-//		System.out.println(loginpage.getPasswordTBX().getAttribute("value"));
-
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		loginpage.signin();
+		Assert.assertEquals(loginpage.getCurrentPageTitle(), "AdminLTE 2 | Dashboard");
 	}
 
+/*	@Test
+	public void navigateToDashboardPage() {
+		driver.get("file:///F:/JBK_Software/Selenium%20Software/Offline%20Website/index.html");
+		loginpage.navigateToDashboardPage();
+		Assert.assertEquals(loginpage.getCurrentPageTitle(), "AdminLTE 2 | Dashboard");
+		System.out.println(driver.getTitle());
+		dashboardpage = new DashboardPage(driver);
+	}*/
 	/*
 	 * @Test public void softAssert_demo() {
 	 * 
@@ -92,7 +100,6 @@ public class LoginPageTests extends BaseTest {
 	 * System.out.println("hardAssert Method Was Started");
 	 * Assert.assertTrue(false);
 	 * System.out.println("hardAssert Method Was Executed"); }
-	 * 
 	 */
 
 }

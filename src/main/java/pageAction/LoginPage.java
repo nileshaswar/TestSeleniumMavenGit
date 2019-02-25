@@ -52,13 +52,19 @@ public class LoginPage extends BasePage {
 		getPasswordTBX().clear();
 		getPasswordTBX().sendKeys(password);
 	}
-
-	public String getPageTitle() {
-		return driver.getTitle();
+	
+	public void navigateToDashboardPage(){
+		setValidCredientials(getValidEmail(),getValidPassword());
+		signin();
+		
 	}
 
 	public WebElement getSignInButton() {
 		return driver.findElement(By.xpath(".//button[@type='submit']"));
+	}
+	
+	public String getCurrentPageTitle() {
+		return driver.getTitle();
 	}
 
 	public void signin() {
@@ -89,5 +95,6 @@ public class LoginPage extends BasePage {
 		System.out.println(getPasswordLabel.getText());
 		return getPasswordLabel;
 	}
+
 
 }

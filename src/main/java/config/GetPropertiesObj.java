@@ -62,4 +62,9 @@ public class GetPropertiesObj implements config {
 		return (config.getProperty("password"));
 	}
 
+	@Override
+	public String getUrl() {
+		return (config.getProperty("url"));
+	}
+
 }

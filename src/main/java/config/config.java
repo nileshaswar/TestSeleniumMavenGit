@@ -7,6 +7,8 @@ public interface config {
 	String getUser();
 
 	String getPassword();
+	
+	String getUrl();
 
 	String getAnyProp(String key);
 }
