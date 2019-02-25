@@ -22,7 +22,7 @@ public class BaseTest {
 	GetPropertiesObj props;
 
 	@BeforeSuite
-	public void beforeSuite() {
+	public void selectBrowser() {
 
 		try {
 			props = GetPropertiesObj.getObj();

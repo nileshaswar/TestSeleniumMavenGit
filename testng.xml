@@ -5,7 +5,6 @@
 		<classes>
 			<class name="testSuite.LoginPageTests" />
 		</classes>
-		<!-- <packages> <package name="testSuite" /> </packages> -->
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
 
