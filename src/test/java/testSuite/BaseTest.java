@@ -69,6 +69,7 @@ public class BaseTest {
 		 */
 		// driver.close();
 		// driver.quit();
+		
 	}
 //	@Test
 	public void navigateToDashboardPage() {

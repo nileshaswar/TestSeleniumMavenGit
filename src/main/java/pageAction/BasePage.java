@@ -24,6 +24,14 @@ public class BasePage {
         wait = new WebDriverWait(driver, TIMEOUT, POLLING);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
         
+/*		try {
+			props = GetPropertiesObj.getObj();
+		} catch (Exception e) {
+			System.out
+					.println("\n\nUnable to read properties in prop object\n\n");
+			e.printStackTrace();
+		}*/
+        
 /*		//set the implicit time out to find WebElements
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//set the page load time out

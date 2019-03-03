@@ -30,7 +30,7 @@ public class DashboardPage extends BasePage {
 	@FindBy(partialLinkText = "operators")
 	WebElement getSidebarOperatorsLink;
 
-	@FindBy(partialLinkText = "logout")
+	@FindBy(xpath = "html/body/div[1]/aside[1]/section/ul/li[5]/a/span")
 	WebElement getSidebarLogoutLink;
 
 	public WebElement getSidebarMenu() {

@@ -34,5 +34,10 @@ public class DashboardPageTests extends BaseTest {
 		System.out.println("Test Case 2");
 		System.out.println(dashboardpage.getCurrentPageTitle());
 	}
+	@Test
+	public void logOut() {
+		dashboardpage.getSidebarLogoutLink().click();
+		Assert.assertEquals(dashboardpage.getCurrentPageTitle(), "AdminLTE 2 | Log in");
+	}
 
 }
