@@ -1,27 +1,44 @@
 package testSuite;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.openqa.selenium.WebDriver;
 
+import pageAction.DashboardPage;
 import pageAction.LoginPage;
 //import pageAction.DashboardPage;
+
+
+
+
+
+
+
 
 import org.testng.asserts.SoftAssert;
 
 public class LoginPageTests extends BaseTest {
 
-	// WebDriver driver;
 	WebDriver driver; // Making it global
 	LoginPage loginpage;
-//	DashboardPage dashboardpage;
 
 	@BeforeClass
 	public void initializeLoginPage() {
-		driver = super.getDriver(); // To access the private variable of the
-									// super class
+		System.out.println("=========== Executing LoginPageTests =========");
+		driver = super.getDriver(); // access private variable of super class
+//		System.out.println("\n 1 --driver object:" + driver);
+		if (driver == null) {
+			super.selectBrowser();// Explicitly Create driver object
+			driver = super.getDriver();
+//			System.out.println("\n 2 --driver object:" + driver);
+		}
+		
 		loginpage = new LoginPage(driver);
+		
 		driver.get("file:///F:/JBK_Software/Selenium%20Software/Offline%20Website/index.html");
 		Assert.assertEquals(loginpage.getCurrentPageTitle(), "AdminLTE 2 | Log in");
 	}
@@ -59,8 +76,21 @@ public class LoginPageTests extends BaseTest {
 		}
 		loginpage.signin();
 		Assert.assertEquals(loginpage.getCurrentPageTitle(), "AdminLTE 2 | Dashboard");
+		
+	}
+	@AfterClass
+	public void navigateToNextPage(){
+//		loginpage.loginWithValidCredentials();
+//		new DashboardPage(this.driver);
+//		new BaseTest(this.driver);
+		
+//		loginpage.browsercleanup();
 	}
 
+	
+	
+	
+	
 /*	@Test
 	public void navigateToDashboardPage() {
 		driver.get("file:///F:/JBK_Software/Selenium%20Software/Offline%20Website/index.html");

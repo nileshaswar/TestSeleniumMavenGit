@@ -3,3 +3,6 @@ url=file:///F:/JBK_Software/Selenium%20Software/Offline%20Website/index.html
 username=kiran@gmail.com
 password=123456
 db=oracle
+implicit_wait=15
+pageload_timeout=60
+
